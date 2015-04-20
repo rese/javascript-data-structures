@@ -79,3 +79,45 @@ BinarySearchTree.prototype.contains = function(value) {
 	// Start at the root
 	return findValue(this.root, value);
 }
+
+BinarySearchTree.prototype.traverse = function(callback) {
+
+	// In-order traversal where left subtree is visited first, 
+	// then the node then its right subtree
+	function inOrder(node) {
+		if(node.left !== null) {
+			// keep going left
+			inOrder(node.left);
+		}
+
+		callback(node);
+
+		if(node.right !== null) {
+			// keep going right
+			inOrder(node.right);
+		}
+	}
+
+	// start at the root
+	inOrder(this.root);
+}
+
+BinarySearchTree.prototype.toString = function() {	
+	var buffer = '';
+
+	this.traverse(function(node) {
+		buffer += node.value;
+	});
+
+	return buffer;
+}
+
+BinarySearchTree.prototype.toArray = function() {
+	var arr = [];
+
+	this.traverse(function(node) {
+		arr.push(node.value);
+	});
+
+	return arr;
+}
