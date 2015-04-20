@@ -49,8 +49,6 @@ BinarySearchTree.prototype.add = function (value) {
 	function addNode(current, node) {
 		direction = getDirection(current, node);
 
-		console.log('iteration(c, n): ', current, node);
-		console.log('current[direction]', current[direction]);
 		if(current[direction] !== null) {
 			addNode(current[direction], node);
 		} else {
@@ -65,16 +63,3 @@ BinarySearchTree.prototype.add = function (value) {
 		addNode(this.root, node);
 	}
 }
-
-var bst = new BinarySearchTree();
-
-bst.add(8);
-bst.add(3);
-bst.add(10);
-bst.add(1);
-bst.add(6);
-bst.add(14);
-bst.add(4);
-bst.add(7);
-bst.add(13);
-console.log(bst);
