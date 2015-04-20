@@ -63,3 +63,19 @@ BinarySearchTree.prototype.add = function (value) {
 		addNode(this.root, node);
 	}
 }
+
+BinarySearchTree.prototype.contains = function(value) {
+
+	function findValue(node, value) {
+		if(value === node.value) {
+			return true;
+		} else if(value < node.value) {
+			return node.left === null ? false : findValue(node.left, value);
+		} else if(value > node.value) {
+			return node.right === null ? false : findValue(node.right, value);
+		}
+	}
+
+	// Start at the root
+	return findValue(this.root, value);
+}
